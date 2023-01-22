@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logi Form design in html and css</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+            font-family: roboto;
+            color: #fff;
+        }
+
+        .contenar{
+            position: relative;
+            width: 350px;
+            height: 430px;
+            background: #000;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        @keyframes anim {
+            0%{transform: rotate(0deg);}
+            100%{transform: rotate(360deg);}
+        }
+
+        .contenar::before, .contenar::after{
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background-image: conic-gradient(transparent,
+            transparent,transparent, #00d9ff);
+            animation: anim 4s linear infinite;
+        }
+        .contenar::after{
+            animation-delay: -2s;
+            background-image: conic-gradient(transparent,
+            transparent,transparent, #ff00d0);
+        }
+
+        .contenar .form{
+            position: absolute;
+            inset: 5px;
+            background: #000;
+            color: #fff;
+            font-size: 12px;
+            z-index: 1;
+            border-radius: 5px;
+            padding: 20px 40px;
+        }
+
+
+        .form .title{
+            color: #00ccff;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 10px 0 40px;
+        }
+        .form .input-box{
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 45px;
+            border: solid 1px #00ccff;
+            border-radius: 3px;
+            margin-bottom: 30px;
+        }
+        .form .input-box input{
+            background-color: transparent;
+            outline: none;
+            border: none;
+            padding: 5px 10px;
+            color: #6a9da9;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: block;
+            font-size: 15px;
+        }
+
+        .form .input-box .s-title{
+            position: absolute;
+            top: -13px;
+            left: 10px;
+            color: #00ccff;
+            background: #000;
+            padding: 6px;
+            font-size: 12px;
+        }
+
+        .form .chackbox{
+            margin-top: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            color: #00ccff;
+        }
+        .form .chackbox .show-password{
+            position: relative;
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            border: solid 2px #00ccff;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .form .chackbox .show-password[array-lable="true"]::before{
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            background-color: #00ccff;
+        }
+
+        .form .submit{
+            outline: none;
+            background: #ff00d0;
+            color: #fff;
+            font-weight: 500;
+            font-size: 14px;
+            border: none;
+            padding: 8px 20px;
+            /* border-radius: 4px; */
+            display: flex;
+            align-items: center;
+            float: right;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+        .form .submit:hover{
+            background: #a20085;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenar">
+        <form action="#" class="form">
+            <div class="title">Login </div>
+
+            <div class="input-box">
+                <input class="user" type="text">
+                <span class="s-title">User Name</span>
+            </div>
+            <div class="input-box">
+                <input class="password" type="password">
+                <span class="s-title">Password</span>
+            </div>
+
+            <div class="info">Hey its me Danish </div>
+            <div class="chackbox">
+                <span class="show-password"></span>
+                <span>Show Password</span>
+            </div>
+
+            <button class="submit">Login</button>
+        </form>
+    </div>
+    <script>
+        document.querySelector('.show-password').addEventListener('click', function () {
+            var password = document.querySelector('.password');
+            password.getAttribute('type') == 'password'
+            ?(password.setAttribute('type', 'text'), this.setAttribute('array-lable', true))
+            : (password.setAttribute('type', 'password'), this.setAttribute('array-lable', false));
+        });
+    </script>
+</body>
+</html>
